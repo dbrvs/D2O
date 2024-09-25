@@ -67,22 +67,23 @@ pi=1e3
 gam=23
 
 # User inputs
-#aS = st.slider("alpha_S -- Source Rate [cell/µL per day]", min_value=0.0, max_value=100.0, value=70.0, step=1.0)
 
 pS = st.slider("p_S -- proliferation Rate [per day]", min_value=0.01, max_value=1.0, value=0.1, step=0.05)
-clrS = st.slider("theta_S -- Clearance Rate [per day]", min_value=0.0, max_value=1.0, value=0.02, step=0.01)
+clrS = st.slider("theta_S -- Net susceptible clearance Rate [per day]", min_value=0.0, max_value=1.0, value=0.02, step=0.01)
+flab = st.slider("f_label -- Labeling Fraction", min_value=0.0, max_value=1.0, value=0.3, step=0.01)
+tinf = st.slider("t_inf -- HIV inoculation [day]", min_value=0, max_value=40, value=14, step=1)
+ton = st.slider("t_on -- Label Start [day]", min_value=0, max_value=40, value=14, step=1)
+toff = st.slider("t_off -- Label Stop [day]", min_value=0, max_value=40, value=21, step=1)
+epsilonAP = st.slider("eps_AP -- APT efficacy (fold reduction of p_S)", min_value=1., max_value=10., value=2., step=0.1)
+
+dS=pS-clrS #clrS = pS-dS 
+
+#in case want to add any other slides?
+#aS = st.slider("alpha_S -- Source Rate [cell/µL per day]", min_value=0.0, max_value=100.0, value=70.0, step=1.0)
 #Bt = st.slider("beta -- Infection Rate [cell/virus per day]", min_value=1e-6, max_value=1e-3, value=1e-4, format="%.6f")
 #dI = st.slider("delta_I -- Infected Cell Death Rate [per day]", min_value=0.0, max_value=1.0, value=0.8, step=0.01)
 #pi = st.slider("pi -- Virus Production Rate [per day]", min_value=0.0, max_value=1e4, value=1e3, step=10.0)
 #gam = st.slider("gamma -- Virus Clearance Rate [per day]", min_value=0.0, max_value=50.0, value=23.0, step=1.0)
-tinf = st.slider("t_inf -- HIV inoculation [day]", min_value=0, max_value=40, value=14, step=1)
-ton = st.slider("t_on -- Label Start [day]", min_value=0, max_value=40, value=14, step=1)
-toff = st.slider("t_off -- Label Stop [day]", min_value=0, max_value=40, value=21, step=1)
-flab = st.slider("f_label -- Labeling Fraction", min_value=0.0, max_value=1.0, value=0.3, step=0.01)
-
-epsilonAP = st.slider("eps_AP -- APT efficacy (fold reduction of p_S)", min_value=1., max_value=10., value=2., step=0.1)
-
-dS=pS-clrS #clrS = pS-dS 
 
 # Initial conditions
 Su0 = aS / clrS
