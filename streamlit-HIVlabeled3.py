@@ -94,21 +94,7 @@ x0 = [Su0, Sl0, Iu0, Il0, V0]
 
 #simulate first natural
 
-ts = np.linspace(0,40,1000)
-
-tinf=10
-ton=0
-toff=7
-flab=0.3
-
-aS=20
-clrS=0.02
-pS=0.1
-dS=pS-clrS #clrS = pS-dS 
-Bt=1e-4
-dI=0.8
-pi=1e3
-gam=23
+ts = np.linspace(0,40,1000) #time series
 
 plist = tinf,aS,pS,dS,Bt,dI,pi,gam,ton,toff,flab
 
