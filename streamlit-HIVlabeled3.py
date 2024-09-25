@@ -26,7 +26,7 @@ def model2(x,t,tinf,aS,pS,dS,Bt,dI,pi,gam,ton,toff,flab):
 
         #proliferation moves Sl to Su, flab=0 here (or could have it time vary??)
         f=0
-        dSudt = aS + pS*(1-f)*Su - dS*Su - Bt*Su*V
+        dSudt = aS + pS*(1-f)*Su + pS*Sl - dS*Su - Bt*Su*V
         dSldt = -pS*Sl - dS*Sl - Bt*Sl*V
             
     dIudt = Bt*Su*V - dI*Iu
@@ -49,8 +49,8 @@ st.write('While labeling, f=flab:')
 st.latex(r'''\dot{S_u}=\alpha_S + \rho_S (1-f) S_u - \delta_S S_u - \beta S_u V''')
 st.latex(r'''\dot{S_l}= \rho_S f S_u + \rho_S f S_l - \delta_S S_l - \beta S_l V''')
 st.write('While NOT labeling, f=0:')
-st.latex(r'''\dot{S_u}=\alpha_S + \rho_S S_u - \delta_S S_u - \beta S_u V''')
-st.latex(r'''\dot{S_u}= - \rho_S S_l - \delta_S S_l- \beta S_u V''')
+st.latex(r'''\dot{S_u}=\alpha_S + \rho_S S_u + \rho_S S_l - \delta_S S_u - \beta S_u V''')
+st.latex(r'''\dot{S_l}= - \rho_S S_l - \delta_S S_l- \beta S_l V''')
 st.write('Rest of dynamics:')
 st.latex(r'''\dot{I_u}= \beta S_u V - \delta_I I_u''')
 st.latex(r'''\dot{I_l}= \beta S_l V - \delta_I I_l''')
